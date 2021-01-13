@@ -1,0 +1,15 @@
+<component name="CopyrightManager">
+  <settings default="Abdhi">
+    <module2copyright>
+      <element module="Project Files" copyright="Abdhi" />
+    </module2copyright>
+    <LanguageOptions name="__TEMPLATE__">
+      <option name="addBlankAfter" value="false" />
+      <option name="separateBefore" value="true" />
+      <option name="separateAfter" value="true" />
+      <option name="lenBefore" value="1" />
+      <option name="lenAfter" value="1" />
+      <option name="box" value="true" />
+    </LanguageOptions>
+  </settings>
+</component>

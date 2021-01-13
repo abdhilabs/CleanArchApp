@@ -1,0 +1,102 @@
+ext {
+    // Android Core
+    androidCompileSdkVersion = 30
+    androidBuildToolsVersion = "30.0.2"
+    androidMinSdkVersion = 22
+    androidTargerSdkVersion = 30
+    androidVersionCode = 1
+    androidVersionName = "1.0"
+
+    // Android Libraries
+    androidxVersion = '1.1.0'
+    constraintLayoutVersion = '1.1.3'
+    materialDesignVersion = '1.2.1'
+
+    // Network Libraries
+    retrofitVersion = '2.8.1'
+    gsonVersion = '2.8.5'
+    okhttpVersion = '3.12.10'
+
+    // DI Libraries
+    daggerVersion = '2.26'
+    javaxVersion = '1'
+
+    // Testing Libraries
+    jUnitVersion = '4.12'
+    mockitoVersion = '3.0.0'
+
+    // Other Libraries
+    timberVersion = '4.7.1'
+
+    def androidLibs = [
+            androidCore     : [group: 'androidx.core', name: 'core-ktx', version: androidxVersion],
+            appCompat       : [group: 'androidx.appcompat', name: 'appcompat', version: androidxVersion],
+            constraintLayout: [group: 'androidx.constraintlayout', name: 'constraintlayout', version: constraintLayoutVersion],
+            materialDesign  : [group: 'com.google.android.material', name: 'material', version: materialDesignVersion]
+    ]
+
+    def networkLibs = [
+            gson             : [group: 'com.google.code.gson', name: 'gson', version: gsonVersion],
+            retrofit         : [group: 'com.squareup.retrofit2', name: 'retrofit', version: retrofitVersion],
+//            retrofitAdapter: [group: 'com.squareup.retrofit2', name:]
+            retrofitConverter: [group: 'com.squareup.retrofit2', name: 'converter-moshi', version: retrofitVersion],
+            okhttp           : [group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: okhttpVersion]
+    ]
+
+    def dependencyInjectionLibs = [
+            daggerCore     : [group: 'com.google.dagger', name: 'dagger', version: daggerVersion],
+            daggerAndroid  : [group: 'com.google.dagger', name: 'dagger-android', version: daggerVersion],
+            daggerCompiler : [group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion],
+            daggerProcessor: [group: 'com.google.dagger', name: 'dagger-android-processor', version: daggerVersion],
+            daggerSupport  : [group: 'com.google.dagger', name: 'dagger-android-support', version: daggerVersion],
+            javax          : [group: 'javax.inject', name: 'javax.inject', version: javaxVersion]
+    ]
+
+    def loggingLibs = [
+            timber: [group: 'com.jakewharton.timber', name: 'timber', version: timberVersion]
+    ]
+
+    def testLibs = [
+            junit  : [group: 'junit', name: 'junit', version: jUnitVersion],
+            mockito: [group: 'org.mockito', name: 'mockito-core', version: mockitoVersion]
+    ]
+
+    appDependencies = [
+            [configuration: "implementation", dependency: androidLibs.androidCore],
+            [configuration: "implementation", dependency: androidLibs.appCompat],
+            [configuration: "implementation", dependency: androidLibs.constraintLayout],
+            [configuration: "implementation", dependency: androidLibs.materialDesign],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.daggerCore],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.daggerAndroid],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.daggerSupport],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.javax],
+            [configuration: "kapt", dependency: dependencyInjectionLibs.daggerCompiler],
+            [configuration: "kapt", dependency: dependencyInjectionLibs.daggerProcessor],
+            [configuration: "implementation", dependency: loggingLibs.timber],
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "testImplementation", dependency: testLibs.mockito]
+    ]
+
+    dataDependencies = [
+            [configuration: "implementation", dependency: dependencyInjectionLibs.daggerCore],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.daggerAndroid],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.daggerSupport],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.javax],
+            [configuration: "kapt", dependency: dependencyInjectionLibs.daggerCompiler],
+            [configuration: "kapt", dependency: dependencyInjectionLibs.daggerProcessor],
+            [configuration: "api", dependency: networkLibs.retrofit],
+            [configuration: "api", dependency: networkLibs.retrofitAdapter],
+            [configuration: "api", dependency: networkLibs.retrofitConverter],
+            [configuration: "api", dependency: networkLibs.okhttp],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.javax],
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "testImplementation", dependency: testLibs.mockito]
+    ]
+
+    domainDependencies = [
+            [configuration: "implementation", dependency: dependencyInjectionLibs.daggerCore],
+            [configuration: "implementation", dependency: dependencyInjectionLibs.javax],
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "testImplementation", dependency: testLibs.mockito]
+    ]
+}
