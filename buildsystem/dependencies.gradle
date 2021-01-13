@@ -17,6 +17,8 @@ ext {
     gsonVersion = '2.8.5'
     okhttpVersion = '3.12.10'
 
+    // LocalDb Libraries
+
     // DI Libraries
     daggerVersion = '2.26'
     javaxVersion = '1'
