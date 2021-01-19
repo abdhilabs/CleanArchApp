@@ -67,7 +67,7 @@ ext {
     ]
 
     def coroutineLibs = [
-            coroutinesCore  : [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: coroutineVersion],
+            coroutineCore  : [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: coroutineVersion],
             coroutineAndroid: [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: coroutineVersion]
     ]
 
@@ -113,6 +113,8 @@ ext {
             [configuration: "implementation", dependency: lifecycleLibs.lifecycleExt],
             [configuration: "implementation", dependency: lifecycleLibs.lifecycleLivedata],
             [configuration: "implementation", dependency: lifecycleLibs.lifecycleLivedata],
+            [configuration: "implementation", dependency: glideLibs.glide],
+            [configuration: "kapt", dependency: glideLibs.glideCompiler],
             [configuration: "kapt", dependency: lifecycleLibs.lifecycleCompiler],
             [configuration: "kapt", dependency: dependencyInjectionLibs.daggerCompiler],
             [configuration: "kapt", dependency: dependencyInjectionLibs.daggerProcessor],
@@ -126,11 +128,15 @@ ext {
             [configuration: "implementation", dependency: dependencyInjectionLibs.daggerAndroid],
             [configuration: "implementation", dependency: dependencyInjectionLibs.daggerSupport],
             [configuration: "implementation", dependency: dependencyInjectionLibs.javax],
+            [configuration: "implementation", dependency: coroutineLibs.coroutineCore],
+            [configuration: "implementation", dependency: coroutineLibs.coroutineAndroid],
             [configuration: "kapt", dependency: dependencyInjectionLibs.daggerCompiler],
             [configuration: "kapt", dependency: dependencyInjectionLibs.daggerProcessor],
             [configuration: "api", dependency: networkLibs.retrofit],
             [configuration: "api", dependency: networkLibs.retrofitAdapter],
             [configuration: "api", dependency: networkLibs.retrofitConverter],
+            [configuration: "api", dependency: networkLibs.moshi],
+            [configuration: "api", dependency: networkLibs.moshiKotlin],
             [configuration: "api", dependency: networkLibs.okhttp],
             [configuration: "implementation", dependency: dependencyInjectionLibs.javax],
             [configuration: "testImplementation", dependency: testLibs.junit],
